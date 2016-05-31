@@ -1,0 +1,12 @@
+body {
+	background-image: url("../images/wood_texture1757.jpg");
+}
+
+textarea {
+	width: 100%;
+	height: 150px;
+}
+
+p.failedSignup {
+	color: red;
+}
