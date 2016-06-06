@@ -4,7 +4,7 @@ show tables;
 create table user (
   id int auto_increment primary key,
   username varchar(50) not null,
-  password varchar(100) not null,
+  password varchar(255) not null,
   emailAddress varchar(100) not null,
   firstName varchar(30) not null,
   lastName varchar(30) not null,

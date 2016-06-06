@@ -10,16 +10,16 @@ $stmtLogin->execute();
 $login = $stmtLogin->fetch(PDO::FETCH_ASSOC); // will be empty if username is bad
 
 // if correct, set session variable?
-if (!$login || $login['password'] != htmlspecialchars($_POST['password'])) { // do i need htmlspecialchars here?
-	// bad username and/or password
-	$_SESSION['failedLogin'] = true;
-} else {
+if ($login || $login['password'] == htmlspecialchars($_POST['password'])) { // do i need htmlspecialchars here?
 	// good username and password
 	$_SESSION['failedLogin'] = false;
 	$_SESSION["username"] = $login['username'];
 	$_SESSION["loggedIn"] = true;
 	$_SESSION["userId"] = $login['id'];
 	// think about implementing a timeout
+} else {
+	// bad username and/or password
+	$_SESSION['failedLogin'] = true;
 }
 
 header('Location: /'); // redirect to index.php
